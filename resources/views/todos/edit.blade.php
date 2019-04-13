@@ -6,14 +6,14 @@ Create new todo
 
 @section('content')
         <h1 class="text-center my-5">
-            Create todos
+            Edit todo
         </h1>
 
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
                     <div class="card-header">
-                        Create new todo
+                        Edit todo
                     </div>
                     <div class="card-body">
                         @if($errors->any())
@@ -27,16 +27,16 @@ Create new todo
                                 </ul>
                             </div>
                         @endif
-                        <form action="/store-todos" method="post">
+                        <form action="/todos/{{ $todo->id }}/update-todos" method="post">
                             @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Name">
+                                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ $todo->name }}">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" cols="5" rows="5" name="description" placeholder="Description"></textarea>
+                                <textarea class="form-control" cols="5" rows="5" name="description" placeholder="Description">{{ $todo->description }}</textarea>
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-success">Create todo</button>
+                                <button type="submit" class="btn btn-success">Update todo</button>
                             </div>
                         </form>
                     </div>
